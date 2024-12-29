@@ -1,0 +1,47 @@
+# Define the Python environment
+WSGIPythonHome "/var/www/html/v1/env"
+
+# Listen on port 80
+Listen 80
+
+# User and group for Apache processes
+User apache
+Group apache
+
+# Root directory settings
+<Directory />
+    AllowOverride none
+    Require all denied
+</Directory>
+
+# Directory settings for /var/www
+<Directory "/var/www">
+    AllowOverride None
+    Require all granted
+</Directory>
+
+# Virtual host configuration
+<VirtualHost *:80>
+    ServerName # IP
+    DocumentRoot /var/www/html
+
+    # Directory settings for /var/www/html
+    <Directory "/var/www/html">
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    # WSGI application configuration
+    WSGIDaemonProcess stocksapp python-home=/var/www/html/v1/env python-path=/var/www/html/v1/stocks
+    WSGIScriptAlias /v1/stocks /var/www/html/v1/stocks/app.wsgi
+
+    # Directory settings for WSGI application
+    <Directory "/var/www/html/v1/stocks">
+        WSGIProcessGroup stocksapp
+        WSGIApplicationGroup %{GLOBAL}
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
