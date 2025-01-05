@@ -131,5 +131,4 @@ def delete_all_sales():
     # delete all sales
     Sale.query.delete()
     db.session.commit()
-
     return '', 204 # HTTP code no content
