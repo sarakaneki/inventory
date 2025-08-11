@@ -2,6 +2,7 @@
 
 A simple **inventory and sales tracking API** built with **Flask** and **SQLite**.  
 It lets you manage stock, track sales, and query data through clean RESTful endpoints.
+This was made for practice.
 
 ## 🚀 Features
 - 📦 **Manage inventory** — Add, update, and view stock levels.  
@@ -20,5 +21,4 @@ It lets you manage stock, track sales, and query data through clean RESTful endp
 - `POST /sales` → Record a sale.  
 - `GET /sales` → View total sales.  
 
-## 💡 Use Case
-Perfect for **small business inventory tracking** or as a **learning project** to practice building APIs with Flask and SQLAlchemy.
+
